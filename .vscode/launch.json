@@ -1,0 +1,15 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch Main",
+            "request": "launch",
+            "mainClass": "br.com.watchbetter.RunAPI",
+            "classPaths": [
+                "lib/gson-2.13.1.jar",
+                "bin"
+            ]
+        }
+    ]
+}
