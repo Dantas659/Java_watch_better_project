@@ -3,7 +3,6 @@ package br.com.watchbetter.stream;
 public class Serie extends Titulos  {
      public Serie(String name, int releaseYear) {
         super(name, releaseYear);
-        //TODO Auto-generated constructor stub
     }
 
      private int seasons;

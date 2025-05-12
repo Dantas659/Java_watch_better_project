@@ -10,7 +10,6 @@ import br.com.watchbetter.stream.Titulos;
 public class Principal extends Titulos{
     public Principal(String name, int releaseYear) {
         super(name, releaseYear);
-        //TODO Auto-generated constructor stub
     }
 
     public static void main(String[] args) throws Exception {

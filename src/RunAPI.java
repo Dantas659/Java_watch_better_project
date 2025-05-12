@@ -4,8 +4,15 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.Scanner;
 
+import com.google.gson.FieldNamingPolicy;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import br.com.watchbetter.stream.TitulosOmdb;
+
 public class RunAPI {
-    public static void main(String[] args) throws Exception { // Add 'throws Exception' to handle errors
+    public static void main(String[] args) throws Exception { 
+        
         Scanner inputUser = new Scanner(System.in);
         System.out.println("Enter the title of the movie or series you want to search for:");
         String userTitle = inputUser.nextLine();
@@ -17,6 +24,14 @@ public class RunAPI {
             .build();
 
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString()); // Fixed method chaining
-        System.out.println(response.body()); // Print the response body
+        var json = response.body();
+        System.out.println(json);
+
+        Gson gson = new GsonBuilder()
+                .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
+                .create();;
+        TitulosOmdb myTitle = gson.fromJson(json, TitulosOmdb.class);
+        System.out.println("Title: " + myTitle);
+
     }
 }

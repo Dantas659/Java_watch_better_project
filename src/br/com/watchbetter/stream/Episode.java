@@ -5,7 +5,7 @@ import br.com.watchbetter.calculator.Rateable;
 public class Episode extends Serie implements Rateable {
     public Episode(String name, int releaseYear) {
         super(name, releaseYear);
-        //TODO Auto-generated constructor stub
+
     }
 
     private int number;
