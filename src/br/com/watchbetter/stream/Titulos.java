@@ -16,6 +16,13 @@ public class Titulos implements Comparable<Titulos> {
         this.releaseYear = releaseYear;
     }
 
+    public Titulos(TitulosOmdb myTitleOmdb) {
+       this.name = myTitleOmdb.title();
+       this.releaseYear = Integer.valueOf(myTitleOmdb.year());
+       this.durationInMinutes = Integer.valueOf(myTitleOmdb.runtime().substring(0,2));
+       this.genre = myTitleOmdb.genre();
+    }
+
     public String getName() {
         return name;
     }

@@ -8,6 +8,7 @@ import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import br.com.watchbetter.stream.Titulos;
 import br.com.watchbetter.stream.TitulosOmdb;
 
 public class RunAPI {
@@ -18,20 +19,30 @@ public class RunAPI {
         String userTitle = inputUser.nextLine();
         inputUser.close(); 
 
+         try {
+
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
-            .uri(URI.create("http://www.omdbapi.com/?t=" + userTitle + "&apikey=14c1e91b")) // Removed leading space in URL
+            .uri(URI.create("http://www.omdbapi.com/?t=" + userTitle.replace(" ", "+" ) + "&apikey=14c1e91b")) // Removed leading space in URL
             .build();
 
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString()); // Fixed method chaining
         var json = response.body();
-        System.out.println(json);
 
         Gson gson = new GsonBuilder()
                 .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
                 .create();;
-        TitulosOmdb myTitle = gson.fromJson(json, TitulosOmdb.class);
-        System.out.println("Title: " + myTitle);
+        TitulosOmdb myTitleOmdb = gson.fromJson(json, TitulosOmdb.class);
+        System.out.println("Title: " + myTitleOmdb);
+
+        
+        
+       
+            Titulos myTitle = new Titulos(myTitleOmdb);
+            System.out.println(myTitle);
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
 
     }
 }
