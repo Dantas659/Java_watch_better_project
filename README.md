@@ -1,7 +1,3 @@
-Claro! Aqui está um modelo de `README.md` para o seu projeto **Watch Better**, com foco didático, boas práticas de POO e preparação para o mercado de trabalho:
-
----
-
 # 🎬 Watch Better - Java OOP Learning Project
 
 ## 📖 Descrição
